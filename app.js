@@ -1,4 +1,4 @@
-const SERVER_PORT = 3000;
+const PORT = process.env.PORT || 5000;
 const DB_LINK = 'mongodb://beealive:beetches@ds115198.mlab.com:15198/beealive';
 
 const express = require("express");
@@ -64,8 +64,8 @@ app.get("/create", function(req, res) {
   });
 });
 
-server.listen(SERVER_PORT, function() {
-  console.log(`Server servin' from good ol' port ${SERVER_PORT}`);
+server.listen(PORT, function() {
+  console.log(`Server servin' from good ol' port ${PORT}`);
 });
 
 io.on("connection", function(socket) {
