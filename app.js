@@ -29,6 +29,10 @@ app.use(express.static("dist"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
+app.get("/", function(req, res) {
+  res.sendFile('views/index.html', { root: __dirname });
+});
+
 app.get("/findAll", function(req, res) {
   Bee.find(function(error, result) {
     if (error) {
