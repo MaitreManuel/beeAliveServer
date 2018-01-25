@@ -1,5 +1,5 @@
 const PORT = process.env.PORT || 5000;
-const DB_LINK = 'mongodb://<dbuser>:<dbpassword>@ds115198.mlab.com:15198/beealive';
+const DB_LINK = 'mongodb://beealive:beetches@ds115198.mlab.com:15198/beealive';
 
 const express = require("express");
 const app = express();
@@ -56,11 +56,19 @@ app.get("/findOne", function(req, res) {
 });
 
 app.get("/create", function(req, res) {
-  Bee.create({
-    "author": req.query.author,
-    "message": req.query.message
-  }, (error, result) => {
-    error ? res.send(error) : res.send(result);
+  Bee.find(function(error, result) {
+    if (error) {
+      res.send(error);
+    } else {
+      if(result.length < 25) {
+        Bee.create({
+          "author": req.query.author,
+          "message": req.query.message
+        }, (error, result) => {
+          error ? res.send(error) : res.send(result);
+        });
+      }
+    }
   });
 });
 
