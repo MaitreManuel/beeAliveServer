@@ -1,4 +1,5 @@
 const SERVER_PORT = 3000;
+const DB_LINK = 'mongodb://beealive:beetches@ds115198.mlab.com:15198/beealive';
 
 const express = require("express");
 const app = express();
@@ -15,7 +16,7 @@ const beeSchema = new Schema({
 });
 const Bee = mongoose.model("Bee", beeSchema);
 
-mongoose.connect("mongodb://localhost:27017/beealive");
+mongoose.connect(DB_LINK);
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
