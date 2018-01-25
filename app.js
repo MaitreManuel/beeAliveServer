@@ -1,5 +1,5 @@
 const PORT = process.env.PORT || 5000;
-const DB_LINK = 'mongodb://beealive:beetches@ds115198.mlab.com:15198/beealive';
+const DB_LINK = 'mongodb://<dbuser>:<dbpassword>@ds115198.mlab.com:15198/beealive';
 
 const express = require("express");
 const app = express();
